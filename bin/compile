@@ -85,7 +85,7 @@ status "Building runtime environment"
 mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $build_dir/.profile.d/nodejs.sh
 
-main_js=$(cat $build_dir/app/package.json | $bp_dir/vendor/jq '.main|"./index.js"')
+main_js=$(cat $build_dir/package.json | $bp_dir/vendor/jq '.main|"./index.js"')
 
 cat > /start <<EOF
 #!/bin/bash
