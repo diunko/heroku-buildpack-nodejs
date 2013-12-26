@@ -39,6 +39,11 @@ else
   status "Resolved node version: $node_version"
 fi
 
+if [ -f $build_dir/packages.txt ]; then
+  status "Installing .deb dependencies from packages.txt"
+  LC_ALL=C DEBIAN_FRONTEND=noninteractive xargs apt-get install -y < $build_dir/packages.txt
+fi
+
 # Download node from Heroku's S3 mirror of nodejs.org/dist
 status "Downloading and installing node"
 node_url="http://s3pository.heroku.com/node/v$node_version/node-v$node_version-linux-x64.tar.gz"
