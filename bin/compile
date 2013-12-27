@@ -102,5 +102,6 @@ cd /app
 node $main_js \$@
 
 EOF
+
 chmod +x /start
 
