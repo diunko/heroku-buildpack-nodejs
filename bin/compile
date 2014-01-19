@@ -43,6 +43,7 @@ fi
 
 if [ -f $build_dir/packages.txt ]; then
   status "Installing .deb dependencies from packages.txt"
+  LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get update
   LC_ALL=C DEBIAN_FRONTEND=noninteractive xargs apt-get install -y < $build_dir/packages.txt
 fi
 
