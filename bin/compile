@@ -77,7 +77,7 @@ fi
 
 # Make npm output to STDOUT instead of its default STDERR
 status "Installing dependencies"
-npm install --userconfig $build_dir/.npmrc --production 2>&1 | indent
+npm install --userconfig $build_dir/.npmrc --unsafe-perm --production 2>&1 | indent
 
 status "Caching node_modules directory for future builds"
 rm -rf $cache_dir
