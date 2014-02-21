@@ -61,6 +61,10 @@ PATH=$PATH:$build_dir/vendor/node/bin
 # Run subsequent node/npm commands from the build path
 cd $build_dir
 
+if test -f $build_dir/.buildcommand; then
+  . $build_dir/.buildcommand
+else
+
 # If node_modules directory is checked into source control then
 # rebuild any native deps. Otherwise, restore from the build cache.
 if test -d $build_dir/node_modules; then
@@ -87,6 +91,8 @@ test -d $build_dir/node_modules && cp -r $build_dir/node_modules $cache_dir/
 status "Cleaning up node-gyp and npm artifacts"
 rm -rf "$build_dir/.node-gyp"
 rm -rf "$build_dir/.npm"
+
+fi
 
 # Update the PATH
 status "Building runtime environment"
